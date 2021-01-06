@@ -1,0 +1,37 @@
+﻿@page "/capabilities"
+
+<h3>Capabilities</h3>
+
+<Text>Lower limit:</Text>
+<AntDesign.InputNumber @bind-Value="@LowerLimit" />
+
+<Text>Lower limit:</Text>
+<AntDesign.InputNumber @bind-Value="@UpperLimit" />
+
+<Button OnClick="@CalculateCapabilities">Calculate</Button>
+
+<Paragraph>
+    <Text Strong>Cg:</Text><Text>@Cg</Text>
+</Paragraph>
+<Paragraph>
+    <Text Strong>Cgk:</Text><Text>@Cgk</Text>
+</Paragraph>
+
+<Divider />
+<Input @bind-Value="@NewMeasurementValue" />
+<Button Type="link" OnClick="@AddMeasurement" Disabled="@(!CanAddMeasurement())" >Add measurement</Button>
+
+@if (Measurements != null)
+{
+    <Table DataSource="@Measurements" TItem="MeasurementData">
+        <Column Field="@context.Value" Title="Value" />
+        <ActionColumn Title="Action">
+            <Button Type="link" OnClick="@(() => DeleteMeasurement(context.Id))">Delete</Button>
+        </ActionColumn>
+    </Table>
+    <Paragraph>
+        Total: @Measurements.Count
+    </Paragraph>
+}
+
+<Button OnClick="@GenerateRandomData">RandomData</Button>
