@@ -5,10 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
+using Vorlesung.Shared;
 
-using BlazorApp.Shared;
-
-namespace BlazorApp.Api
+namespace Vorlesung.Api
 {
     public static class WeatherForecastFunction
     {

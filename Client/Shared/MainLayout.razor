@@ -1,15 +1,52 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="sidebar">
-    <NavMenu />
-</div>
+<AntDesign.Layout Style="min-height: 100vh;" Class="site-layout">
+    <Header Style="padding: 0 20px;">
+        <div style="font-weight: 600; font-size: 30px; color: white; float: left">
+            Vorlesung
+        </div>
+    </Header>
+    <AntDesign.Layout>
+        <Sider Collapsible Collapsed=@collapsed OnCollapse=@onCollapse Width="230">
+            <NavMenu />
+        </Sider>
+        <AntDesign.Layout Class="site-layout">
+            <Content Style="margin:16px;">
+                <div id="main-content-body" class="site-layout-background" style="padding:24px; min-height: 360px">
+                    @Body
+                </div>
+            </Content>
+            <Footer Style="text-align:center ">Boat Buddy ©2020 Created by Alexander Neumann</Footer>
+        </AntDesign.Layout>
+    </AntDesign.Layout>
+</AntDesign.Layout>
 
-<div class="main">
-    <div class="top-row px-4">
-        <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
-    </div>
 
-    <div class="content px-4">
-        @Body
-    </div>
-</div>
+@code {
+    bool collapsed;
+
+    void onCollapse(bool collapsed)
+    {
+        this.collapsed = collapsed;
+    }
+}
+
+
+<style>
+    .logo {
+        height: 32px;
+        width: 32px;
+        background: rgba(255, 255, 255, 1.0);
+        border-radius: 50%;
+        border: 2px solid #fff;
+    }
+
+    .site-layout .site-layout-background {
+        /*background: #fff;*/
+    }
+    /*.ant-layout-sider-trigger {
+        min-width: var(--b-sidebar-width, 230px);
+        max-width: var(--b-sidebar-width, 230px);
+        width: var(--b-sidebar-width, 230px);
+    }*/
+</style>
