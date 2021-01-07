@@ -66,7 +66,7 @@ namespace Vorlesung.Shared.Capabilities
             {
                 var sigma = ProcessMath.StdDeviation(measurements);
 
-                var average = ProcessMath.Average(measurements);
+                var average = ProcessMath.Mean(measurements);
 
                 return Math.Min(UpperLimitValue - average, average - LowerLimitValue) / (3d * sigma);
             }

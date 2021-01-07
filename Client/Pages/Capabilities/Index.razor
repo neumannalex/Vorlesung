@@ -1,37 +1,47 @@
 ﻿@page "/capabilities"
 
-<h3>Capabilities</h3>
+@using Vorlesung.Client.Pages.Capabilities.Components
 
-<Text>Lower limit:</Text>
-<AntDesign.InputNumber @bind-Value="@LowerLimit" />
+<Spin Spinning="@IsGeneratingData">
+    <AntDesign.Row Gutter="(16,24)">
+        <AntDesign.Col Span="12">
+            <Card Title="Capabilities">
+                <CapabilityDetailsView Data="@Measurements" />
+            </Card>
+        </AntDesign.Col>
 
-<Text>Lower limit:</Text>
-<AntDesign.InputNumber @bind-Value="@UpperLimit" />
+        <AntDesign.Col Span="12">
+            <Card Title="Random Data">
+                <Body>
+                    <Collapse>
+                        <Panel Header="Even Distribution">
+                            <EvenDistributionGenerator OnDataChange="@OnDataChanged" OnGeneratingDataChange="@OnGeneratingDataChanged" />
+                        </Panel>
+                        <Panel Header="Standard Normal Distribution">
+                            <StandardNormalDistributionGenerator OnDataChange="@OnDataChanged" OnGeneratingDataChange="@OnGeneratingDataChanged" />
+                        </Panel>
+                        <Panel Header="Normal Distribution">
+                            <NormalDistributionGenerator OnDataChange="@OnDataChanged" OnGeneratingDataChange="@OnGeneratingDataChanged" />
+                        </Panel>
+                    </Collapse>
+                </Body>
+            </Card>
+        </AntDesign.Col>
 
-<Button OnClick="@CalculateCapabilities">Calculate</Button>
+        <AntDesign.Col Span="12">
+            <Card Title="Data">
+                <Body>
+                    <MeasurementTableView Data="@Measurements" OnDataChange="@OnDataChanged" />
+                </Body>
+            </Card>
+        </AntDesign.Col>
 
-<Paragraph>
-    <Text Strong>Cg:</Text><Text>@Cg</Text>
-</Paragraph>
-<Paragraph>
-    <Text Strong>Cgk:</Text><Text>@Cgk</Text>
-</Paragraph>
-
-<Divider />
-<Input @bind-Value="@NewMeasurementValue" />
-<Button Type="link" OnClick="@AddMeasurement" Disabled="@(!CanAddMeasurement())" >Add measurement</Button>
-
-@if (Measurements != null)
-{
-    <Table DataSource="@Measurements" TItem="MeasurementData">
-        <Column Field="@context.Value" Title="Value" />
-        <ActionColumn Title="Action">
-            <Button Type="link" OnClick="@(() => DeleteMeasurement(context.Id))">Delete</Button>
-        </ActionColumn>
-    </Table>
-    <Paragraph>
-        Total: @Measurements.Count
-    </Paragraph>
-}
-
-<Button OnClick="@GenerateRandomData">RandomData</Button>
+        <AntDesign.Col Span="12">
+            <Card Title="Graphics">
+                <Body>
+                    <HistogramView Data="@Measurements" />
+                </Body>
+            </Card>
+        </AntDesign.Col>
+    </AntDesign.Row>
+</Spin>

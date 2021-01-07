@@ -6,7 +6,7 @@ namespace Vorlesung.Shared.Capabilities
 {
     public static class ProcessMath
     {
-        public static double Average(IList<double> measurements)
+        public static double Mean(IList<double> measurements)
         {
             if (measurements == null)
                 throw new ArgumentNullException("Input data may not be null.");
@@ -38,7 +38,7 @@ namespace Vorlesung.Shared.Capabilities
 
             try
             {
-                var average = Average(measurements);
+                var average = Mean(measurements);
 
                 var squaredDifference = 0d;
 

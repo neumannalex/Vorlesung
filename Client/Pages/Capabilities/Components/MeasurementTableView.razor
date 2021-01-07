@@ -1,0 +1,18 @@
+﻿<Form Model="@addMeasurementModel"
+      Layout="@FormLayout.Inline">
+    <FormItem Label="New value">
+        <AntDesign.Input Placeholder="New measurement value" AllowClear="true" @bind-Value="@context.Measurement" />
+    </FormItem>
+    <FormItem>
+        <Button OnClick="@AddMeasurement" Icon="plus" Type="primary"></Button>
+    </FormItem>
+</Form>
+<Paragraph>
+    Total: @Data.Count <Button Type="link" OnClick="@ClearData">Clear all data</Button>
+</Paragraph>
+<Table DataSource="@Data" TItem="MeasurementData">
+    <AntDesign.Column Field="@context.Value" Title="Value" />
+    <ActionColumn Title="Action">
+        <Button Type="link" OnClick="@(() => DeleteMeasurement(context.Id))">Delete</Button>
+    </ActionColumn>
+</Table>

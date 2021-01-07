@@ -1,0 +1,19 @@
+﻿<Form Model="@updateBinModel"
+      Layout="@FormLayout.Inline">
+    <FormItem Label="Number of bins">
+        <AntDesign.Input Placeholder="Number of Bins" AllowClear="true" @bind-Value="@context.NumberOfBins" />
+    </FormItem>
+    <FormItem>
+        <Button OnClick="@UpdateChart" Icon="redo" Type="primary"></Button>
+    </FormItem>
+</Form>
+
+@if (Data != null && Data.Count > 0)
+{
+    <Histogram @ref="@_chart" Data="@HistogramData" Config="@ChartConfig" />
+    <AntDesign.Text>Items: @Data.Count</AntDesign.Text>
+}
+else
+{
+    <Empty />
+}

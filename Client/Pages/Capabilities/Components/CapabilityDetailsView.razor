@@ -1,0 +1,45 @@
+﻿<Form Model="@limitValuesModel"
+      Layout="@FormLayout.Inline">
+    <FormItem Label="Lower limit">
+        <AntDesign.Input Placeholder="Lower limit value" AllowClear="true" @bind-Value="@context.Lower" />
+    </FormItem>
+    <FormItem Label="Upper limit">
+        <AntDesign.Input Placeholder="Upper limit value" AllowClear="true" @bind-Value="@context.Upper" />
+    </FormItem>
+    <FormItem>
+        <Button OnClick="@Calculate" Type="primary">Calculate</Button>
+    </FormItem>
+</Form>
+
+<AntDesign.Row>
+    <AntDesign.Col Span="24">
+        <Statistic Title="Measurements" Value="@capabilityDetails.Count" DecimalSeparator="," GroupSeparator="." Precision="0" />
+    </AntDesign.Col>
+</AntDesign.Row>
+
+<AntDesign.Row>
+    <AntDesign.Col Span="12">
+        <Statistic Title="Minimum" Value="@capabilityDetails.Min" DecimalSeparator="," GroupSeparator="." Precision="3" />
+    </AntDesign.Col>
+    <AntDesign.Col Span="12">
+        <Statistic Title="Maximum" Value="@capabilityDetails.Max" DecimalSeparator="," GroupSeparator="." Precision="3" />
+    </AntDesign.Col>
+</AntDesign.Row>
+
+<AntDesign.Row>
+    <AntDesign.Col Span="12">
+        <Statistic Title="Mean" Value="@capabilityDetails.Mean" DecimalSeparator="," GroupSeparator="." Precision="3" />
+    </AntDesign.Col>
+    <AntDesign.Col Span="12">
+        <Statistic Title="Std. Deviation" Value="@capabilityDetails.StdDeviation" DecimalSeparator="," GroupSeparator="." Precision="3" />
+    </AntDesign.Col>
+</AntDesign.Row>
+
+<AntDesign.Row>
+    <AntDesign.Col Span="12">
+        <Statistic Title="Cg" Value="@capabilityDetails.Cg" ValueStyle="@CgColor" DecimalSeparator="," GroupSeparator="." Precision="3" />
+    </AntDesign.Col>
+    <AntDesign.Col Span="12">
+        <Statistic Title="Cgk" Value="@capabilityDetails.Cgk" ValueStyle="@CgkColor" DecimalSeparator="," GroupSeparator="." Precision="3" />
+    </AntDesign.Col>
+</AntDesign.Row>

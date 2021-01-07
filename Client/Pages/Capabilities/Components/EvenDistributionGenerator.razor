@@ -1,0 +1,17 @@
+﻿<Form Model="@model"
+      Layout="@FormLayout.Horizontal"
+      LabelCol="new ColLayoutParam { Span = 8 }"
+      WrapperCol="new ColLayoutParam { Span = 16 }">
+    <FormItem Label="Number of values">
+        <AntDesign.Input Placeholder="Number of values" AllowClear="true" @bind-Value="@context.Count" />
+    </FormItem>
+    <FormItem Label="Minimum value">
+        <AntDesign.Input Placeholder="Minimum value" AllowClear="true" @bind-Value="@context.Min" />
+    </FormItem>
+    <FormItem Label="Maximum value">
+        <AntDesign.Input Placeholder="Maximum value" AllowClear="true" @bind-Value="@context.Max" />
+    </FormItem>
+    <FormItem WrapperCol="new ColLayoutParam{ Offset = 8, Span = 16 }">
+        <Button OnClick="@GenerateData" Type="primary">Generate</Button>
+    </FormItem>
+</Form>
