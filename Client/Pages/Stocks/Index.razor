@@ -1,0 +1,26 @@
+﻿@page "/stocks"
+
+<h3>Stocks</h3>
+<Spin Spinning="@IsLoading">
+    <Button OnClick="@Load">Load</Button>
+
+    <AntDesign.Row>
+        <AntDesign.Col Span="12">
+            <Card Title="Data Table">
+                <Table DataSource="@Series">
+                    <AntDesign.Column Field="@context" Title="Date">@context.Date.ToString()</AntDesign.Column>
+                    <AntDesign.Column @bind-Field="@context.Open" Title="Open" />
+                    <AntDesign.Column @bind-Field="@context.High" Title="High" />
+                    <AntDesign.Column @bind-Field="@context.Low" Title="Low" />
+                    <AntDesign.Column @bind-Field="@context.Close" Title="Close" />
+                    <AntDesign.Column @bind-Field="@context.Volume" Title="Volume" />
+                </Table>
+            </Card>            
+        </AntDesign.Col>
+        <AntDesign.Col Span="12">
+            <Card Title="Data Chart">
+                <Empty />
+            </Card>
+        </AntDesign.Col>
+    </AntDesign.Row>
+</Spin>

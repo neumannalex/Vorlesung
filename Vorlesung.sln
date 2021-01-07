@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vorlesung.Client", "Client\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vorlesung.Shared", "Shared\Vorlesung.Shared.csproj", "{3DC4D146-5318-4FB7-B96D-91E6DFD7AEBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{5CAAFD39-CB02-4FE3-9900-CDE022C84482}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{5CAAFD39-CB02-4FE3-9900-CDE022C84482}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

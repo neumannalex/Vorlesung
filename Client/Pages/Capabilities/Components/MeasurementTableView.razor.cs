@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,13 +17,27 @@ namespace Vorlesung.Client.Pages.Capabilities.Components
         public Action<List<MeasurementData>> OnDataChange { get; set; }
 
         public AddMeasurementModel addMeasurementModel = new AddMeasurementModel();
-        
+
+        public AntDesign.Form<AddMeasurementModel> form;
+
         public void AddMeasurement()
         {
-            if (Data != null)
+            try
             {
-                Data.Add(new MeasurementData { Value = addMeasurementModel.Measurement });
-                OnDataChange?.Invoke(Data);
+                var isValid = form.Validate();
+
+                Console.WriteLine($"Is valid: {isValid}");
+                Console.WriteLine($"Data: {JsonConvert.SerializeObject(addMeasurementModel)}");
+
+                if (Data != null && isValid)
+                {
+                    Data.Add(new MeasurementData { Value = addMeasurementModel.Measurement });
+                    OnDataChange?.Invoke(Data);
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 

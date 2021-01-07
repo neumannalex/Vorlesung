@@ -13,14 +13,14 @@
         <AntDesign.Col Span="12">
             <Card Title="Random Data">
                 <Body>
-                    <Collapse>
-                        <Panel Header="Even Distribution">
+                    <Collapse Accordion DefaultActiveKey="@(new[] {"3"})">
+                        <Panel Header="Even Distribution" Key="1">
                             <EvenDistributionGenerator OnDataChange="@OnDataChanged" OnGeneratingDataChange="@OnGeneratingDataChanged" />
                         </Panel>
-                        <Panel Header="Standard Normal Distribution">
+                        <Panel Header="Standard Normal Distribution" Key="2">
                             <StandardNormalDistributionGenerator OnDataChange="@OnDataChanged" OnGeneratingDataChange="@OnGeneratingDataChanged" />
                         </Panel>
-                        <Panel Header="Normal Distribution">
+                        <Panel Header="Normal Distribution" Key="3">
                             <NormalDistributionGenerator OnDataChange="@OnDataChanged" OnGeneratingDataChange="@OnGeneratingDataChanged" />
                         </Panel>
                     </Collapse>

@@ -1,7 +1,10 @@
-﻿<Form Model="@addMeasurementModel"
+﻿<Form @ref="@form"
+      Model="@addMeasurementModel"
+      Size="@AntSizeLDSType.Small"
+      ValidateOnChange="true"
       Layout="@FormLayout.Inline">
     <FormItem Label="New value">
-        <AntDesign.Input Placeholder="New measurement value" AllowClear="true" @bind-Value="@context.Measurement" />
+        <AntDesign.Input @bind-Value="@context.Measurement" />
     </FormItem>
     <FormItem>
         <Button OnClick="@AddMeasurement" Icon="plus" Type="primary"></Button>
