@@ -1,0 +1,8 @@
+﻿<Table DataSource="@Series">
+    <AntDesign.Column Field="@context" Title="Date">@context.Date.ToString()</AntDesign.Column>
+    <AntDesign.Column @bind-Field="@context.Open" Title="Open" />
+    <AntDesign.Column @bind-Field="@context.High" Title="High" />
+    <AntDesign.Column @bind-Field="@context.Low" Title="Low" />
+    <AntDesign.Column @bind-Field="@context.Close" Title="Close" />
+    <AntDesign.Column @bind-Field="@context.Volume" Title="Volume" />
+</Table>

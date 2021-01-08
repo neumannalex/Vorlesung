@@ -1,0 +1,20 @@
+﻿@if (Data == null || Data.MetaData == null)
+{
+    <Empty />
+}
+else
+{
+    <Descriptions Bordered Layout="@DescriptionsLayout.Vertical">
+        <DescriptionsItem Title="Information">@Data.MetaData.Information</DescriptionsItem>
+
+        <DescriptionsItem Title="Symbol">@Data.MetaData.Symbol</DescriptionsItem>
+
+        <DescriptionsItem Title="Last refreshed">@Data.MetaData.LastRefreshed.ToString()</DescriptionsItem>
+
+        <DescriptionsItem Title="Timezone">@Data.MetaData.TimeZone</DescriptionsItem>
+
+        <DescriptionsItem Title="Interval">@Data.MetaData.Interval</DescriptionsItem>
+
+        <DescriptionsItem Title="Output">@Data.MetaData.OutputSize</DescriptionsItem>
+    </Descriptions>
+}

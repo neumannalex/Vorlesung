@@ -1,25 +1,78 @@
 ﻿@page "/stocks"
 
-<h3>Stocks</h3>
-<Spin Spinning="@IsLoading">
-    <Button OnClick="@Load">Load</Button>
+@using Vorlesung.Client.Pages.Stocks.Components
 
-    <AntDesign.Row>
-        <AntDesign.Col Span="12">
-            <Card Title="Data Table">
-                <Table DataSource="@Series">
-                    <AntDesign.Column Field="@context" Title="Date">@context.Date.ToString()</AntDesign.Column>
-                    <AntDesign.Column @bind-Field="@context.Open" Title="Open" />
-                    <AntDesign.Column @bind-Field="@context.High" Title="High" />
-                    <AntDesign.Column @bind-Field="@context.Low" Title="Low" />
-                    <AntDesign.Column @bind-Field="@context.Close" Title="Close" />
-                    <AntDesign.Column @bind-Field="@context.Volume" Title="Volume" />
-                </Table>
+<Spin Spinning="@IsLoading">
+    <AntDesign.Row Gutter="(16,24)">
+        <AntDesign.Col Span="8">
+            <Card Title="Search">
+                <Space Direction="vertical">
+                    <SpaceItem>
+                        <BlazoredTypeahead SearchMethod="@SearchSymbols"
+                                           @bind-Value="@SelectedSymbol"    
+                                           placeholder="Search for symbol or stock name"
+                                           Debounce="200">
+                            <SelectedTemplate>
+                                @context.Symbol
+                            </SelectedTemplate>
+                            <ResultTemplate>
+                                @context.Symbol | @context.Name | @context.Type (@context.MatchScore)
+                            </ResultTemplate>
+                            <NotFoundTemplate>
+                                Sorry, no matches found.
+                            </NotFoundTemplate>
+                        </BlazoredTypeahead>
+                    </SpaceItem>
+                    <SpaceItem>
+                        <Button OnClick="@Load" Type="primary" Disabled="@(SelectedSymbol == null)">Get data for selected symbol</Button>
+                    </SpaceItem>
+                </Space>                    
             </Card>
         </AntDesign.Col>
-        <AntDesign.Col Span="12">
-            <Card Title="Data Chart">
-                <PlotlyChart @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" />
+
+        <AntDesign.Col Span="16">
+            @if (CompanyOverviewData != null)
+            {
+                <Card Title="Company Overview">
+                    <CardTabs>
+                        <CompanyOverview Data="@CompanyOverviewData" />
+                    </CardTabs>
+                </Card>
+            }
+            else
+            {
+                <Card Title="Company Overview">
+                    <Body>
+                        <Empty />
+                    </Body>
+                </Card>
+            }
+        </AntDesign.Col>
+
+        <AntDesign.Col Span="24">
+            <Card Title="Time Series Data">
+                <CardTabs>
+                    <Tabs>
+                        <TabPane Key="1">
+                            <Tab>Overview</Tab>
+                            <ChildContent>
+                                <IntradayMetadataView Data="@Data" />
+                            </ChildContent>
+                        </TabPane>
+                        <TabPane Key="2">
+                            <Tab>Table View</Tab>
+                            <ChildContent>
+                                <IntradayTable Data="@Data" />
+                            </ChildContent>
+                        </TabPane>
+                        <TabPane Key="3">
+                            <Tab>Chart View</Tab>
+                            <ChildContent>
+                                <IntradayChart Data="@Data" Title="Intraday Timeseries" />
+                            </ChildContent>
+                        </TabPane>
+                    </Tabs>
+                </CardTabs>                
             </Card>
         </AntDesign.Col>
     </AntDesign.Row>

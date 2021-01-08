@@ -1,0 +1,23 @@
+﻿@if (Data == null)
+{
+    <Empty />
+}
+else
+{
+
+    <Tabs TabPosition="@TabPosition.Top">
+        <TabPane Key="1">
+            <Tab>Description</Tab>
+            <ChildContent><Text>@Data.Description</Text></ChildContent>
+        </TabPane>
+        <TabPane Key="2">
+            <Tab>Properties</Tab>
+            <ChildContent>
+                <Table DataSource="@Properties" PageSize="5">
+                    <AntDesign.Column @bind-Field="@context.Property" Title="Property" />
+                    <AntDesign.Column @bind-Field="@context.Value" Title="Value" />
+                </Table>
+            </ChildContent>
+        </TabPane>
+    </Tabs>
+}
