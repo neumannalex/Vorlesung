@@ -15,11 +15,11 @@
                     <AntDesign.Column @bind-Field="@context.Close" Title="Close" />
                     <AntDesign.Column @bind-Field="@context.Volume" Title="Volume" />
                 </Table>
-            </Card>            
+            </Card>
         </AntDesign.Col>
         <AntDesign.Col Span="12">
             <Card Title="Data Chart">
-                <Empty />
+                <PlotlyChart @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" />
             </Card>
         </AntDesign.Col>
     </AntDesign.Row>
