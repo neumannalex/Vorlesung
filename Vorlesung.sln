@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30308.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vorlesung.Api", "API\Vorlesung.Api.csproj", "{B3A5AFFA-5517-41E6-BAE2-C30558032DD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "API\Api.csproj", "{B3A5AFFA-5517-41E6-BAE2-C30558032DD9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vorlesung.Client", "Client\Vorlesung.Client.csproj", "{52AF5162-0ED3-42DC-A246-39C57DBAA3C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "Client\Client.csproj", "{52AF5162-0ED3-42DC-A246-39C57DBAA3C7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vorlesung.Shared", "Shared\Vorlesung.Shared.csproj", "{3DC4D146-5318-4FB7-B96D-91E6DFD7AEBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{3DC4D146-5318-4FB7-B96D-91E6DFD7AEBA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{5CAAFD39-CB02-4FE3-9900-CDE022C84482}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vorlesung.ML", "ML\Vorlesung.ML.csproj", "{E48A039F-57BB-4D71-8E35-8BE9DED80D11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ML", "ML\ML.csproj", "{E48A039F-57BB-4D71-8E35-8BE9DED80D11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
