@@ -17,6 +17,7 @@ namespace Vorlesung.Api.ML
         [FunctionName("PredictLanguage")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "predict")] HttpRequest req,
+            ExecutionContext context,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function PredictLanguage processed a request.");
@@ -30,7 +31,7 @@ namespace Vorlesung.Api.ML
 
                 log.LogDebug($"Text to predict: {logtext}");
 
-                string modelPath = @"ML/MLModel.zip";
+                string modelPath = Path.Combine(context.FunctionDirectory, "..", "ML", "MLModel.zip");
 
                 LanguageModel model = new LanguageModel(modelPath);
 
