@@ -1,0 +1,12 @@
+﻿<Form Model="@model"
+      Size="@AntSizeLDSType.Small"
+      Layout="@FormLayout.Horizontal"
+      LabelCol="new ColLayoutParam { Span = 4 }"
+      WrapperCol="new ColLayoutParam { Span = 20 }">
+    <FormItem Label="Text">
+        <AntDesign.Input @bind-Value="@model.Text" />
+    </FormItem>
+    <FormItem WrapperCol="new ColLayoutParam{ Offset = 4, Span = 20 }">
+        <Button Type="primary" OnClick="@Analyze">Analyze</Button>
+    </FormItem>
+</Form>

@@ -1,0 +1,19 @@
+﻿<Form Model="@model"
+      Size="@AntSizeLDSType.Small"
+      Layout="@FormLayout.Horizontal"
+      LabelCol="new ColLayoutParam { Span = 4 }"
+      WrapperCol="new ColLayoutParam { Span = 20 }">
+    <FormItem Label="Text">
+        <AntDesign.Select TItem="string" TItemValue="string" @bind-Value="@model.SelectedText">
+            <SelectOptions>
+                @foreach (var text in DemoText)
+                {
+                    <SelectOption TItemValue="string" TItem="string" Value="@text" Label="@text" />
+                }
+            </SelectOptions>
+        </AntDesign.Select>
+    </FormItem>
+    <FormItem WrapperCol="new ColLayoutParam{ Offset = 4, Span = 20 }">
+        <Button Type="primary" OnClick="@Analyze">Analyze</Button>
+    </FormItem>
+</Form>

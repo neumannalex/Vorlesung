@@ -1,0 +1,18 @@
+﻿@if(Predictions.Count <= 0)
+{
+    <Empty />
+}
+else
+{
+    <Paragraph>
+        <AntDesign.Text>The predicted language is </AntDesign.Text>
+        <AntDesign.Text Strong Type="success">@Predictions[0].Language</AntDesign.Text>
+    </Paragraph>
+    <AntList DataSource="@Predictions" ItemLayout="@ListItemLayout.Vertical">
+        <ChildContent Context="item">
+            <ListItem>
+                <span><Text Strong>@item.Language</Text></span>@(Math.Round(100 * item.Score, 2)) %
+            </ListItem>
+        </ChildContent>
+    </AntList>
+}

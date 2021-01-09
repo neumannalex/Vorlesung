@@ -1,0 +1,37 @@
+﻿@page "/ml"
+
+@using Vorlesung.Client.Pages.ML.Components
+
+<Spin Spinning="@IsLoading">
+    <AntDesign.Row Gutter="(16,24)">
+        <AntDesign.Col Span="8">
+            <Card Title="Input">
+                <CardTabs>
+                    <Tabs>
+                        <TabPane Key="1">
+                            <Tab>Demo</Tab>
+                            <ChildContent>
+                                <DemoTextInput OnTextChange="@OnTextChange" />
+                            </ChildContent>
+                        </TabPane>
+                        <TabPane Key="2">
+                            <Tab>Custom</Tab>
+                            <ChildContent>
+                                <CustomTextInput OnTextChange="@OnTextChange" />
+                            </ChildContent>
+                        </TabPane>
+                    </Tabs>
+                </CardTabs>
+            </Card>
+        </AntDesign.Col>
+
+        <AntDesign.Col Span="8">
+            <Card Title="Result">
+                <Body>
+                    <PredictionDisplay Predictions="@Predictions" />
+                </Body>
+            </Card>
+        </AntDesign.Col>
+
+    </AntDesign.Row>
+</Spin>
