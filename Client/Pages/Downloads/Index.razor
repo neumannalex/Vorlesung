@@ -1,0 +1,34 @@
+﻿@page "/downloads"
+
+<AntDesign.Row>
+    <AntDesign.Col Span="24">
+        <Card Title="Downloads">
+            <Extra>
+                <AuthorizeView Roles="admin">
+                    <Authorized>
+                        <Upload Action="@($"{_host}/api/downloads")" Name="file" ShowUploadList="false" OnCompleted="@Refresh">
+                            <Button Icon="upload" Size="large" Shape="circle" Type="primary"></Button>
+                        </Upload>
+                    </Authorized>
+                </AuthorizeView>
+                <Button OnClick="@Refresh" Icon="reload" Size="large" Shape="circle" Type="secondary"></Button>
+            </Extra>
+            <Body>
+                <Table DataSource="@Downloads" Loading="@IsLoading">
+                    <AntDesign.Column @bind-Field="@context.Filename" Title="Filename" />
+                    <AntDesign.Column @bind-Field="@context.DownloadCount" Title="Number of downloads" />
+                    <AntDesign.Column @bind-Field="@context.CreatedOn" Title="Created on" />
+                    <AntDesign.ActionColumn Title="Action">
+                        <a class="ant-btn ant-btn-link" href="@(_host)/api/files/@context.Id" target="_blank">Download</a>
+                        <AuthorizeView Roles="admin">
+                            <Authorized Context="auth">
+                                <Button Type="link" OnClick="@(async () => await DeleteDownload(context.Id))">Delete</Button>
+                            </Authorized>
+                        </AuthorizeView>
+                    </AntDesign.ActionColumn>
+                </Table>
+            </Body>            
+        </Card>
+    </AntDesign.Col>
+</AntDesign.Row>
+

@@ -1,10 +1,15 @@
 ﻿@inherits LayoutComponentBase
 
+@using Vorlesung.Client.Authentication
+
 <AntDesign.Layout Style="min-height: 100vh;" Class="site-layout">
     <Header Style="padding: 0 20px;">
         <div style="font-weight: 600; font-size: 30px; color: white; float: left">
             Vorlesung
         </div>
+        <Menu Mode="MenuMode.Horizontal" Theme="MenuTheme.Dark" Style="float: right">
+            <LoginMenu />
+        </Menu>
     </Header>
     <AntDesign.Layout>
         <Sider Collapsible Collapsed=@collapsed OnCollapse=@onCollapse Width="230">

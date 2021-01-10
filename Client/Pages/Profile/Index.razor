@@ -1,0 +1,26 @@
+﻿@page "/profile"
+@attribute [Authorize()]
+
+<AuthorizeView>
+    <Authorized>
+        <AntDesign.Row Justify="center">
+            <AntDesign.Col>
+                <AntDesign.Card Title="My profile">
+                    <Body>
+                        <Descriptions Title="Basic">
+                            <DescriptionsItem Title="Username">@context.User.Identity.Name</DescriptionsItem>
+                        </Descriptions>
+
+                        @foreach (var claim in context.User.Claims)
+                        {
+                            <Descriptions Title="Claim" Bordered Layout="@DescriptionsLayout.Vertical">
+                                <DescriptionsItem Title="Type">@claim.Type</DescriptionsItem>
+                                <DescriptionsItem Title="Value">@claim.Value</DescriptionsItem>
+                            </Descriptions>
+                        }
+                    </Body>
+                </AntDesign.Card>
+            </AntDesign.Col>
+        </AntDesign.Row>
+    </Authorized>
+</AuthorizeView>

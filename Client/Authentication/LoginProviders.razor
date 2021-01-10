@@ -1,0 +1,22 @@
+﻿@page "/login-providers"
+
+<AntDesign.Row Justify="center">
+    <AntDesign.Col Span="8">
+        <AntDesign.Card Bordered="false" Title="Login">
+            <Body>
+                @foreach (var provider in Providers)
+                {
+                    <a class="btn btn-block btn-sm btn-social btn-@provider.Name" href="/.auth/login/@provider.Route">
+                        <span class="fa fa-@provider.Icon"></span> Sign in with @provider.Title
+                    </a>
+                }
+            </Body>
+        </AntDesign.Card>
+    </AntDesign.Col>
+</AntDesign.Row>
+
+<style>
+    .btn-social {
+        margin: 4px 4px;
+    }
+</style>

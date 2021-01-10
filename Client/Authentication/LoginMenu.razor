@@ -1,0 +1,22 @@
+﻿<AuthorizeView>
+    <Authorized>
+        <SubMenu>
+            <TitleTemplate>
+                Hi, @context.User.Identity.Name!
+            </TitleTemplate>
+            <ChildContent>
+                <MenuItem Key="profile">
+                    <MenuLink Href="/profile">Profile</MenuLink>
+                </MenuItem>
+                <MenuItem Key="logout">
+                    <MenuLink Href="/.auth/logout">Logout</MenuLink>
+                </MenuItem>
+            </ChildContent>
+        </SubMenu>
+    </Authorized>
+    <NotAuthorized>
+        <MenuItem Key="login">
+            <MenuLink Href="/login-providers">Login</MenuLink>
+        </MenuItem>
+    </NotAuthorized>
+</AuthorizeView>

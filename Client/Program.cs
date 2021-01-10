@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Vorlesung.Client;
+using Vorlesung.Client.Authentication;
 using Vorlesung.Client.Pages.Stocks;
 
 namespace Vorlesung.Client
@@ -17,6 +18,7 @@ namespace Vorlesung.Client
 
             var baseAddress = builder.Configuration["BaseAddress"] ?? builder.HostEnvironment.BaseAddress;
             builder.Services.AddScoped(_ => new HttpClient { BaseAddress = new Uri(baseAddress) });
+            builder.Services.AddStaticWebAppAuthentication();
             builder.Services.AddAntDesign();
             builder.Services.AddScoped<AlphaVantageClient>();
 
