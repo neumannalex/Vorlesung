@@ -51,6 +51,12 @@ namespace Tests
     public class MathTests
     {
         [Fact]
+        public void Nonsense()
+        {
+            Assert.True(true);
+        }
+
+        [Fact]
         public void MeanThrowsOnNull()
         {
             Assert.Throws<ArgumentNullException>(() => ProcessMath.Mean(null));

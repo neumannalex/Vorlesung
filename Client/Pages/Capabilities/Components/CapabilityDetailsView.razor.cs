@@ -16,7 +16,12 @@ namespace Vorlesung.Client.Pages.Capabilities.Components
         [Parameter]
         public List<MeasurementData> Data { get; set; }
 
-        public LimitValuesModel limitValuesModel = new LimitValuesModel();
+        [Parameter]
+        public LimitValuesModel Limits { get; set; } = new LimitValuesModel();
+
+        [Parameter]
+        public Action<LimitValuesModel> OnLimitsChange { get; set; }
+
         public CapabilityDetailsModel capabilityDetails = new CapabilityDetailsModel();
 
         public string CgColor = null;
@@ -28,6 +33,11 @@ namespace Vorlesung.Client.Pages.Capabilities.Components
             {"green", "color: #3f8600" },
             {"red", "color: #cf1322" }
         };
+
+        public void NotifyLimitsChanged()
+        {
+            OnLimitsChange?.Invoke(Limits);
+        }
 
         protected override void OnParametersSet()
         {
@@ -52,8 +62,8 @@ namespace Vorlesung.Client.Pages.Capabilities.Components
                 return;
             }
 
-            var cgCapability = new CgProcessCapability(limitValuesModel.Lower, limitValuesModel.Upper);
-            var cgkCapability = new CgkProcessCapability(limitValuesModel.Lower, limitValuesModel.Upper);
+            var cgCapability = new CgProcessCapability(Limits.Lower, Limits.Upper);
+            var cgkCapability = new CgkProcessCapability(Limits.Lower, Limits.Upper);
 
             var data = Data.Select(x => x.Value).ToList();
 

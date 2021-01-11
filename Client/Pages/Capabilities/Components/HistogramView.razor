@@ -11,7 +11,8 @@
 
 @if (Data != null && Data.Count > 0)
 {
-    <Histogram @ref="@_chart" Data="@HistogramData" Config="@ChartConfig" />
+    @*<Histogram @ref="@_chart" Data="@HistogramData" Config="@ChartConfig" />*@
+    <Plotly.Blazor.PlotlyChart @ref="@_chart" Config="@ChartConfig" Layout="@ChartLayout" Data="@ChartData" />
     <AntDesign.Text>Items: @Data.Count</AntDesign.Text>
 }
 else

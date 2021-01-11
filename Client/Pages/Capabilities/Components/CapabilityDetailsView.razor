@@ -1,11 +1,11 @@
-﻿<Form Model="@limitValuesModel"
+﻿<Form Model="@Limits"
       Size="@AntSizeLDSType.Small"
       Layout="@FormLayout.Inline">
     <FormItem Label="Lower limit">
-        <AntDesign.Input Placeholder="Lower limit value" AllowClear="true" @bind-Value="@context.Lower" />
+        <AntDesign.Input Placeholder="Lower limit value" AllowClear="true" @bind-Value="@context.Lower" TValue="double" OnChange="NotifyLimitsChanged"  />
     </FormItem>
     <FormItem Label="Upper limit">
-        <AntDesign.Input Placeholder="Upper limit value" AllowClear="true" @bind-Value="@context.Upper" />
+        <AntDesign.Input Placeholder="Upper limit value" AllowClear="true" @bind-Value="@context.Upper" TValue="double" OnChange="NotifyLimitsChanged" />
     </FormItem>
     <FormItem>
         <Button OnClick="@Calculate" Type="primary" Icon="calculator" />

@@ -6,7 +6,7 @@
     <AntDesign.Row Gutter="(16,24)">
         <AntDesign.Col Span="12">
             <Card Title="Capabilities">
-                <CapabilityDetailsView Data="@Measurements" />
+                <CapabilityDetailsView Data="@Measurements" Limits="@Limits"  OnLimitsChange="@OnLimitsChanged" />
             </Card>
         </AntDesign.Col>
 
@@ -39,7 +39,7 @@
         <AntDesign.Col Span="12">
             <Card Title="Graphics">
                 <Body>
-                    <HistogramView Data="@Measurements" />
+                    <HistogramView Data="@Measurements" Limits="@Limits" />
                 </Body>
             </Card>
         </AntDesign.Col>
